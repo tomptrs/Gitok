@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animatie</title>
+</head>
+<body onload="start()">
+   
+   <canvas id="mycanvas" width="500" height="500"></canvas>
+    
+    
+    <script>
+    
+        var canvas;
+        var ctx;
+        
+        function start(){
+            canvas = document.getElementById("mycanvas");
+            ctx = canvas.getContext('2d');
+            
+            ctx.fillRect(10,20,400,40);
+        }
+        
+    </script>
+</body>
+</html>

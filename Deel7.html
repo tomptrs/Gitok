@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animatie</title>
+</head>
+<body onload="start()">
+   
+   <canvas id="mycanvas" width="300" height="300"></canvas>
+    
+    
+    <script>
+    
+        var canvas;
+        var ctx;
+        var x = 50;
+        var y = 50;
+        var vx = 5;
+        var vy = 4;
+        
+        var x2 = 100;
+        var y2 = 100;
+        var vx2 = 4;
+        var vy2 = 5;
+        
+        function start(){
+            canvas = document.getElementById("mycanvas");
+            ctx = canvas.getContext('2d');
+            
+            animate();
+        }
+        
+        
+        function animate(){
+            
+            //Clear
+            ctx.clearRect(0,0,300,300);
+            
+            //Update
+            x = x + vx;
+            y = y + vy;
+            
+            if(x > 300|| x < 0){
+                vx = vx*-1;
+               
+            }
+            
+            if( y > 300 || y < 0){
+                vy = vy*-1;
+            }
+            
+            
+            //Bal 2
+            
+            x2 = x2 + vx2;
+            y2 = y2 + vy2;
+            
+            if(x2 > 300|| x2 < 0){
+                vx2 = vx2*-1;
+               
+            }
+            
+            if( y2 > 300 || y2 < 0){
+                vy2 = vy2*-1;
+            }
+            
+            
+            //Collision Detection
+            var dx = Math.abs(x-x2);
+            var dy = Math.abs(y - y2);
+            var afstand = Math.sqrt(dx*dx + dy*dy);
+            
+            if(afstand < 20){
+                vx = vx*-1;
+                //vx2 = vx2*-1;
+                console.log(x);
+                console.log(x2);
+            }
+            
+            //draw
+            ctx.beginPath();
+            ctx.arc(x,y,10,0,Math.PI*2,false);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(x2,y2,10,0,Math.PI*2,false);
+            ctx.fill();
+            
+            
+            setTimeout(animate,33);
+        }
+        
+    </script>
+</body>
+</html>
